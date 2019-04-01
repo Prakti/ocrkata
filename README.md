@@ -1,12 +1,12 @@
 Pseudo OCR
 ==========
 
-Szenario Beschreibung
----------------------
-Sie arbeiten bei einem Paketdients bei dem in der täglichen Arbeit viel
-maschinengeschriebene Etiketten verarbeitet werden müssen. Auf den Etiketten
-stehen nummern, welche bereits maschinengetützt eingelesen werden. Das
-Ergebnis sieht so aus:
+Szenario Description
+-----------------------
+You work for a bank, which has recently purchased an ingenious machine to assist
+in reading letters and faxes sent in by branch offices. The machine scans the
+paper documents, and produces a file with a number of entries which each look
+like this:
 ```
   _  _     _  _  _  _  _
 | _| _||_||_ |_   ||_||_|
@@ -14,36 +14,48 @@ Ergebnis sieht so aus:
                            
 ```
 
-Jeder Eintrag besteht aus 4 Zeilen und jede Zeile besteht aus 27 Zeichen.
-Die ersten 3 Zeilen bilden eine Rückverfolgungs-Nummer deren Ziffern durch
-die Zeichen `_` und `|` gebildet werden und die letzte Zeile ist vollständig
-leer. Jede Rückverfolgungs-Nummer sollte aus 9 Ziffern die im Bereich 0-9
-liegen. Eine normale Datei enthält normalerweise rund 500 Einträge.
+Each entry is 4 lines long, and each line has 27 characters. The first 3 lines
+of each entry contain an account number written using pipes and underscores, and
+the fourth line is blank. Each account number should have 9 digits, all of which
+should be in the range 0-9. A normal file contains around 500 entries.
 
-Aufgabe
--------
-Schreiben Sie ein Program, welches diese Datei entgegen nimmt und die Einträge
-in richtige Rückverfolgungs-Nummern für die Weiterverarbeitung umwandelt.
+Your Task
+----------
+Your first task is to write a program that can take this file and parse it into
+actual account numbers.
 
-Beispiel
+Example
 --------
-* Eingabe:
+* Input:
 ```
     _  _  _  _  _  _     _ 
 |_||_|| || ||_   |  |  ||_ 
   | _||_||_||_|  |  |  | _| 
 
 ```
-* Ausgabe: 490067715
+* Ouput: 490067715
 
-Hinweise
---------
-* Beispielhafte Testdaten liegen im `data` Verzeichnis
-* Implementieren Sie Ihre Lösung in einem separaten Unerverzeichnis
-* Ihre Lösung sollte Eingabe-Daten entweder über std-in entgegen nehmen,
-  oder es ermögichen den Namen der Eingabe-Datei beim Aufruf zu übergeben.
-* Ihre Lösung sollte Ausgaben auf std-out schreiben oder es ermöglichen den
-  Namen der Ausgabe-Datei beim Aufruf zu übergeben.
-* Das Verzeichnis mit Ihrer Lösung sollte eine kurze Readme enthalten in der
-  beschrieben ist wie man sie übersetzt und aufruft.
+Dojo Mode (Randori Style)
+----------------------------
+* Pairing and Timeboxing
+  * The driver has the keyboard and has control what is written
+  * The navigator helps to keep the overview and has the right to stop him 
+  * Everyone else is just spectator 
+  * Timebox is 5 Minutes
+  * After the timebox the driver rejoins the audience and the navigator becomes the driver
+* Test Driven Design
+  * Identify a sub-problem of the whole kata
+  * Write the smallest possible test that solves a sub-problem
+  * Make the test green
+  * Refactor code but keep the test green
+  * Babystepping: solve the smallest possible sub-problem at a time
 
+Hints
+------
+* Example Testdata is located in the `data` directory
+* Your solution should either read input via std-in or should take a
+  filename as the first parameter and then reading input from that file.
+* Your solution should either write output to std-out or should take a filename
+  as the first or second parameter and write output to that file.
+* Start with a test for a function that receives three strings and either
+  returns the digit "8" or returns an error.
